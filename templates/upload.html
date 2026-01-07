@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Upload Huddle Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .logout {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .logout a {
+            color: #dc3545;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .status {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logout">
+            <a href="/logout">Logout</a>
+        </div>
+
+        <h2>Upload Huddle CSV Report</h2>
+
+        <form
+            method="POST"
+            action="/process"
+            enctype="multipart/form-data"
+        >
+            <input type="file" name="file" accept=".csv" required />
+            <button type="submit">Upload & Process</button>
+        </form>
+
+        <div class="status">
+            {% if message %}
+                {{ message }}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
